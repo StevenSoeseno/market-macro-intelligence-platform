@@ -1,0 +1,5 @@
+PROJECT_ID = "market-macro-intelligence"
+BUCKET_NAME = "market-macro-intel-lake-steven"
+DATASET_ID = "market_macro_dw"
+STOCK_TABLE = "stock_prices"
+MACRO_TABLE = "macro_indicators"
