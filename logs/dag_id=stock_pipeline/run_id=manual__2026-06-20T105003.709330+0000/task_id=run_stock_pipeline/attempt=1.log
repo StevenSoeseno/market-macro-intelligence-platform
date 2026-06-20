@@ -1,0 +1,108 @@
+[2026-06-20T10:50:07.614+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-06-20T10:50:07.632+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: stock_pipeline.run_stock_pipeline manual__2026-06-20T10:50:03.709330+00:00 [queued]>
+[2026-06-20T10:50:07.639+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: stock_pipeline.run_stock_pipeline manual__2026-06-20T10:50:03.709330+00:00 [queued]>
+[2026-06-20T10:50:07.640+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2026-06-20T10:50:07.652+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): run_stock_pipeline> on 2026-06-20 10:50:03.709330+00:00
+[2026-06-20T10:50:07.660+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=135) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-06-20T10:50:07.662+0000] {standard_task_runner.py:72} INFO - Started process 137 to run task
+[2026-06-20T10:50:07.661+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'stock_pipeline', 'run_stock_pipeline', 'manual__2026-06-20T10:50:03.709330+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/stock_pipeline_dag.py', '--cfg-path', '/tmp/tmpcog7gkqy']
+[2026-06-20T10:50:07.663+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask run_stock_pipeline
+[2026-06-20T10:50:07.714+0000] {task_command.py:467} INFO - Running <TaskInstance: stock_pipeline.run_stock_pipeline manual__2026-06-20T10:50:03.709330+00:00 [running]> on host cbe19654f702
+[2026-06-20T10:50:07.789+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='stock_pipeline' AIRFLOW_CTX_TASK_ID='run_stock_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2026-06-20T10:50:03.709330+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-06-20T10:50:03.709330+00:00'
+[2026-06-20T10:50:07.791+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2026-06-20T10:50:07.791+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2026-06-20T10:50:07.791+0000] {logging_mixin.py:190} INFO - Current task name:run_stock_pipeline state:running start_date:2026-06-20 10:50:07.632920+00:00
+[2026-06-20T10:50:07.792+0000] {logging_mixin.py:190} INFO - Dag name:stock_pipeline and current dag run status:running
+[2026-06-20T10:50:07.792+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-06-20T10:50:07.793+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-06-20T10:50:07.794+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        cd /opt/***/project &&\n        python pipelines/run_stock_pipeline.py\n        ']
+[2026-06-20T10:50:07.809+0000] {subprocess.py:86} INFO - Output:
+[2026-06-20T10:50:08.023+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-06-20T10:50:08.023+0000] {subprocess.py:93} INFO -   File "/opt/***/project/etl/extract/extract_stocks.py", line 1, in <module>
+[2026-06-20T10:50:08.026+0000] {subprocess.py:93} INFO -     import yfinance as yf
+[2026-06-20T10:50:08.027+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'yfinance'
+[2026-06-20T10:50:08.030+0000] {subprocess.py:93} INFO - Extracting stocks...
+[2026-06-20T10:50:08.030+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-06-20T10:50:08.031+0000] {subprocess.py:93} INFO -   File "/opt/***/project/pipelines/run_stock_pipeline.py", line 5, in <module>
+[2026-06-20T10:50:08.032+0000] {subprocess.py:93} INFO -     subprocess.run(
+[2026-06-20T10:50:08.033+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/subprocess.py", line 571, in run
+[2026-06-20T10:50:08.033+0000] {subprocess.py:93} INFO -     raise CalledProcessError(retcode, process.args,
+[2026-06-20T10:50:08.033+0000] {subprocess.py:93} INFO - subprocess.CalledProcessError: Command '['/home/***/.local/bin/python', 'etl/extract/extract_stocks.py']' returned non-zero exit status 1.
+[2026-06-20T10:50:08.039+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-06-20T10:50:08.050+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-06-20T10:50:08.056+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2026-06-20T10:50:08.056+0000] {logging_mixin.py:190} INFO - Task start:2026-06-20 10:50:07.632920+00:00 end:2026-06-20 10:50:08.055447+00:00 duration:0.422527
+[2026-06-20T10:50:08.057+0000] {logging_mixin.py:190} INFO - Task:<Task(BashOperator): run_stock_pipeline> dag:<DAG: stock_pipeline> dagrun:<DagRun stock_pipeline @ 2026-06-20 10:50:03.709330+00:00: manual__2026-06-20T10:50:03.709330+00:00, state:running, queued_at: 2026-06-20 10:50:03.737805+00:00. externally triggered: True>
+[2026-06-20T10:50:08.058+0000] {logging_mixin.py:190} INFO - Failure caused by Bash command failed. The command returned a non-zero exit code 1.
+[2026-06-20T10:50:08.058+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=stock_pipeline, task_id=run_stock_pipeline, run_id=manual__2026-06-20T10:50:03.709330+00:00, execution_date=20260620T105003, start_date=20260620T105007, end_date=20260620T105008
+[2026-06-20T10:50:08.074+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-06-20T10:50:08.074+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 5 for task run_stock_pipeline (Bash command failed. The command returned a non-zero exit code 1.; 137)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-06-20T10:50:08.118+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-06-20T10:50:08.134+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-06-20T10:50:08.137+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
