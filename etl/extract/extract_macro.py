@@ -41,6 +41,11 @@ print(macro_df.head())
 print()
 print(macro_df.shape)
 
+os.makedirs(
+    "data/raw/macro",
+    exist_ok=True
+)
+
 macro_df.to_parquet(
     "./data/raw/macro/macro_raw.parquet",
     index=False

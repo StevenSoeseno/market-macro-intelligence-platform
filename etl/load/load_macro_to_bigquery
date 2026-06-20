@@ -1,4 +1,10 @@
 from google.cloud import bigquery
+import sys
+from pathlib import Path
+sys.path.append(
+    str(Path(__file__).resolve().parents[2])
+)
+from config.settings import PROJECT_ID, DATASET_ID
 
 PROJECT_ID = "market-macro-intelligence"
 
@@ -10,7 +16,9 @@ TABLE_REF = (
     f"{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}"
 )
 
-client = bigquery.Client()
+client = bigquery.Client(
+    project=PROJECT_ID
+)
 
 job_config = bigquery.LoadJobConfig(
     source_format=bigquery.SourceFormat.PARQUET,

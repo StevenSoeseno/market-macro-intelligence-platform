@@ -72,6 +72,11 @@ if missing_tickers:
         f"Missing tickers: {missing_tickers}"
     )
 
+os.makedirs(
+    "data/raw/stocks",
+    exist_ok=True
+)
+
 output_path = "data/raw/stocks/stocks_raw.parquet"
 
 stocks_df.to_parquet(
