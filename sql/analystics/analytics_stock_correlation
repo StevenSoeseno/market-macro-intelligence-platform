@@ -1,0 +1,9 @@
+CREATE OR REPLACE VIEW market_macro_dw.analytics_correlations AS
+
+SELECT
+  ticker,
+  CORR(Close, fed_funds_rate) AS corr_fedfunds,
+  CORR(Close, treasury_10y) AS corr_treasury10y,
+  CORR(Close, cpi) AS corr_cpi
+FROM market_macro_dw.analytics_stock_macro_filled
+GROUP BY ticker;
